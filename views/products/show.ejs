@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %></title>
+</head>
+<body>
+    <%- include('../navbar') %>
+
+    <h1><%= product.name %></h1>
+    
+    <div>
+        <p><strong>Category:</strong> <%= product.category %></p>
+        <p><strong>Price:</strong> $<%= product.price %></p>
+        <p><strong>Size:</strong> <%= product.size %></p>
+        <p><strong>Color:</strong> <%= product.color %></p>
+        <p><strong>In Stock:</strong> <%= product.inStock ? "Yes" : "No" %></p>
+        
+
+    
+        </form>
+
+    </div>
+
+    <a href="/products">Back to Products</a>
+</body>
+</html>

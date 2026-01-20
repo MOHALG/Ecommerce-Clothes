@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../navbar') %>
+    <h1>Products</h1>
+
+    <% products.forEach((oneProduct)=>{ %>
+        <div>
+            <h2><%= oneProduct.name %></h2>
+            <p>Category: <%= oneProduct.category %></p>
+            <p>Price: $<%= oneProduct.price %></p>
+            <p>Size: <%= oneProduct.size %></p>
+            <p>Color: <%= oneProduct.color %></p>
+            <p>In Stock: <%= oneProduct.inStock ? "Yes" : "No" %></p>
+            <a href="/products/<%= oneProduct._id %>">View Details</a>
+        </div>
+        <hr/> 
+
+    <% })%>
+</body>
+</html>

@@ -25,7 +25,34 @@ router.post("/", async (req, res) => {
     res.redirect("/products");
 });
 
+//router for editing a product
+router.get("/:id/edit", async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    res.render("edit.ejs", { product });
+});
 
+// put route to update a product
+router.put("/:id", async (req, res) => {
+    req.body.inStock = req.body.inStock === "on";
+    const updatedProduct = await Product.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true }
+    );
+    res.redirect("/products");
+});
+// router to delete a product
+
+router.get("/:id/delete", async (req, res) => {
+    const deleteProduct = await Product.findById(req.params.id);
+    res.render("delete.ejs", { product: deleteProduct });
+});
+
+// Delete route to delete a product
+router.delete("/:id", async (req, res) => {
+    await Product.findByIdAndDelete(req.params.id);
+    res.redirect("/products");
+});
 
 // Get single product details (dynamic route LAST)
 router.get("/:id", async (req, res) => {

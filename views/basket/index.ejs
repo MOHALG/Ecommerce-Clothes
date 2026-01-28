@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <% let total = 0; %>
+    <h1>Basket</h1>
+    <ul>
+
+        <% basket.forEach((item) => { %>
+            <% total += item.price; %>
+            <li><%= item.name %> - $<%= item.price %> -<%= item.size %></li>
+        <% }) %>
+    </ul>
+    <h2>Total: $<%= total.toFixed(2) %></h2>
+    <% if (basket.length === 0) { %>
+    <p>Your basket is currently empty.</p>
+    <a href="/products">Continue Shopping</a>
+    <% } else { %>
+    <form action="/basket/checkout" method="POST">
+        <button type="submit">Proceed to Checkout</button>
+        <button formaction="/basket/clear" formmethod="POST">Clear Basket</button>
+        <button formaction="/products" formmethod="GET">Continue Shopping</button>
+    </form>
+    <% } %>
+
+</body>
+</html>

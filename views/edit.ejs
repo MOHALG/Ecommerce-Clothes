@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -20,6 +21,8 @@
             <input type="text" id="color" name="color" value="<%= product.color %>" required><br>
             <label for="inStock">In Stock:</label>
             <input type="checkbox" id="inStock" name="inStock" <%= product.inStock ? 'checked' : '' %>><br>
+            <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br>
             <button type="submit">Update Product</button>
 
     </form>

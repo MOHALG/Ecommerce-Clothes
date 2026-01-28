@@ -3,6 +3,18 @@ const mongoose = require("mongoose");
 const Product = require("../models/Products.js");
 const Supplier = require("../models/Supplier.js");
 const router = express.Router(); 
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) =>{
+        cb(null, 'public/images');
+    },
+    filename: (req, file, cb) =>{
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // Get all products
 router.get("/", async (req, res) => {
@@ -17,9 +29,13 @@ router.get("/new", async (req, res) => {
 
 // post route to create new product
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single('image'), async (req, res) => {
     // Convert checkbox "on" to boolean
     req.body.inStock = req.body.inStock === "on";
+    // Save the image path if file was uploaded
+    if (req.file) {
+        req.body.image = req.file.filename;
+    }
     console.log(req.body);
     const newProduct = await Product.create(req.body);
     res.redirect("/products");

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="create-new-product">
     <h1>Create New Product</h1>
-    <form action="/products" method="POST">
+    <form action="/products" method="POST" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
 
@@ -26,7 +28,14 @@
         <label for="inStock">In Stock:</label>
         <input type="checkbox" id="inStock" name="inStock"><br>
 
-        <button type="submit">Create Product</button>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br>
+
+        <div class="form-actions">
+            <button type="submit" class="button button-primary">Create Product</button>
+            <a href="/products" class="button button-secondary">Back to Products</a>
+        </div>
     </form>
+    </div>
 </body>
 </html>

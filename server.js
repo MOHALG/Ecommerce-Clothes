@@ -11,6 +11,8 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const methodOverride = require('method-override')
 const productsController = require("./controllers/products.js");
+const basketController = require("./controllers/basket.js");
+
 
 // middleware
 app.set('view engine', 'ejs');
@@ -70,11 +72,10 @@ app.use("/", indexController);
 
 
 
-
 // PROTECTED ROUTES:
 app.use(isSignedIn)
-app.use('/products',productsController)
-
+app.use('/basket',basketController)
+app.use('/products',productsController)  // Admins need login to manage products
 // Everything under the user NEEDS to be logged in to se
 
 

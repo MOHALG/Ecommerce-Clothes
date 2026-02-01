@@ -121,7 +121,7 @@ body {
     text-decoration: underline;
 }
 
-.product-item {
+.prducproduct-item {
     background: #fff;
     padding: 15px;
     margin-bottom: 20px;
@@ -147,3 +147,162 @@ body {
 
 
 
+.product-edit-form {
+    font: 2rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.product-edit-form form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.product-edit-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.product-edit-form input[type="text"],
+.product-edit-form input[type="number"],
+.product-edit-form input[type="file"],
+.product-edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.product-edit-form button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-edit-form button:hover {
+    background-color: #0056b3;
+}
+
+.product-listing {
+    font: 2rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.product-listing .product-item {
+    margin-bottom: 15px;
+}
+.product-listing .product-item img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.product-listing .product-item h2 {
+    margin-bottom: 10px;
+}
+.product-listing .product-item p {
+    margin-bottom: 5px;
+}
+.product-listing .product-item button {
+    margin-top: 10px;
+    cursor: pointer;
+}
+.product-edit-form {
+    font: 2rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.product-edit-form form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.product-edit-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.product-edit-form input[type="text"],
+.product-edit-form input[type="number"],
+.product-edit-form input[type="file"],
+.product-edit-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.product-edit-form button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-edit-form button:hover {
+    background-color: #0056b3;
+}
+
+.product-item {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.product-item h2 {
+    margin-bottom: 10px;
+}
+.product-item p {
+    margin-bottom: 5px;
+}
+.product-item img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.product-item button {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.product-edit-form {
+    font: 2rem;
+    color: #333;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.product-edit-form form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.options-bar {
+    margin-top: 10px;
+}
+.options-bar a {
+    margin-right: 15px;
+    color: #007BFF;
+    text-decoration: none;
+}
+.options-bar a:hover {
+    text-decoration: underline;
+}   
+.options-bar button {
+    background-color: rgb(0, 128, 98);
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 

@@ -48,8 +48,13 @@ router.get("/:id/edit", async (req, res) => {
 });
 
 // put route to update a product
-router.put("/:id", async (req, res) => {
+router.put("/:id", upload.single('image'), async (req, res) => {
+
     req.body.inStock = req.body.inStock === "on";
+    console.log(req.body);
+     if (req.file) {
+        req.body.image = req.file.filename;
+    }
     const updatedProduct = await Product.findByIdAndUpdate(
         req.params.id,
         req.body,

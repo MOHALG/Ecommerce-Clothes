@@ -28,10 +28,11 @@ Middleware order is crucial - follow this exact pattern:
 ## Models & Database Patterns
 ### Product Schema ([models/Products.js](models/Products.js))
 Required fields: `category`, `price`, `size`, `color`, `name`, `inStock` (boolean)
+- Optional `image` field stores uploaded filename (not full path)
 - Commented-out `supplier` field suggests future Supplier relationship
 
 ### User Schema ([models/User.js](models/User.js))
-- `basket` array references Product IDs (not yet implemented in controllers)
+- `basket` array references Product IDs - **now implemented** in basket controller
 - `isAdmin` boolean for future role-based access
 
 ## Controller Conventions
@@ -39,12 +40,22 @@ Required fields: `category`, `price`, `size`, `color`, `name`, `inStock` (boolea
 - Controllers use Express Router and export `router`
 - Auth routes: `/auth/sign-up`, `/auth/sign-in`, `/auth/sign-out`
 - Product routes: RESTful pattern under `/products`
+- Basket routes: `/basket/add/:productId`, `/basket`, `/basket/clear`, `/basket/checkout`
 
 ### Products Controller Key Patterns
 1. **Static routes before dynamic**: `/new` route defined before `/:id` to avoid conflicts
 2. **Checkbox handling**: Convert `"on"` to boolean - `req.body.inStock = req.body.inStock === "on"`
 3. **Confirmation pages**: GET routes for `/id/edit` and `/:id/delete` render confirmation forms
 4. **HTTP verbs**: Use PUT for updates, DELETE for deletion (via method-override)
+5. **File uploads**: Multer configured with diskStorage to save images to `public/images/` with timestamp prefix
+   - Single file upload: `upload.single('image')` middleware on POST and PUT routes
+   - Filename stored in database: `req.body.image = req.file.filename`
+
+### Basket Controller Patterns
+- `/add/:productId` - POST route pushes product ID to user's basket array
+- `/` - GET route populates basket with `.populate('basket')` to show full product details
+- `/clear` - POST route sets basket array to empty
+- `/checkout` - POST route clears basket after simulated checkout (payment logic placeholder)
 
 ## Form & View Patterns
 - **Method Override**: Forms use `?_method=PUT` or `?_method=DELETE` query params (see [server.js](server.js#L21))
@@ -73,7 +84,8 @@ Uses async `connectToDB()` function with try-catch error handling (see [server.j
 3. **Error handling**: Simple `.send()` for errors - consider implementing proper error pages
 4. **Redirects**: After mutations, always redirect (e.g., `res.redirect("/products")`)
 5. **Async/await**: Controllers consistently use async/await without try-catch (consider adding)
-6. **Basket feature**: User model has `basket` array but no controller implementation yet
+6. **File uploads**: Images uploaded via multer are saved to `public/images/` with timestamped filenames
+7. **Populate pattern**: Use `.populate('basket')` on User queries to get full product details instead of just IDs
 
 ## File Naming
 - Models: PascalCase (e.g., `Products.js`, `User.js`)
